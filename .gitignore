@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# MacOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Data files (if too large)
+# Uncomment if you want to exclude data
+# data/
