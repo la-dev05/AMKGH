@@ -1,49 +1,83 @@
-# AMKH (Adaptive Momentum Kurtosis Hybrid) Optimizer
+# AMKGH (Adaptive Momentum Kurtosis Hybrid) Optimizer
 
-This project implements the AMKH optimizer and runs experiments on quadratic functions, Rosenbrock, and MNIST.
+AMKGH introduces a dynamic mechanism that switches between an adaptive update (Adam-style) and a momentum-based update (SGD-style) based on the **kurtosis** (heaviness of tails) of the gradient distribution. This allows it to maintain the fast convergence of adaptive methods on smooth landscapes while providing the robustness of SGD on noisy or ill-conditioned landscapes.
 
-Author: Lakshya Gupta, U20240077
+## Prerequisites
 
-## Setup
+To run the code and experiments, you need Python installed along with the following libraries:
 
-1. Create a virtual environment:
-   ```
-   python -m venv venv
-   ```
+- **Python 3.x**
+- **PyTorch** (Core deep learning framework)
+- **Torchvision** (For MNIST dataset)
+- **NumPy** (For math operations)
+- **Matplotlib** (For plotting results)
+- **Jupyter Notebook** (To execute the `.ipynb` file)
 
-2. Activate the virtual environment:
-   ```
-   source venv/bin/activate
-   ```
+### Installation
 
-3. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+You can install the required dependencies using pip:
 
-## Running the Experiments
+```
+pip install torch torchvision numpy matplotlib notebook
+```
 
-Open `AMKH.ipynb` in Jupyter and run the cells. The notebook includes the following experiments:
+## File Structure
 
-- **Quadratic Functions**: Tests convergence on well-conditioned (condition number 10) and ill-conditioned (condition number 100) quadratic functions.
-- **Rosenbrock Function**: Evaluates performance on the Rosenbrock function, which has a narrow valley that challenges optimizers.
-- **MNIST Neural Network**: Trains a simple MLP on the MNIST dataset to compare optimizer performance on a real-world task.
+- `AMKGH.ipynb`: The main Jupyter Notebook containing the full source code for the optimizer and all benchmark experiments.
+    - **Section 1:** Global setup and seeding for reproducibility.
+    - **Section 2:** The `AMKGH` Optimizer class implementation.
+    - **Section 3-6:** Experiment functions for Quadratic functions, Rosenbrock function, and MNIST.
+    - **Section 7:** Main execution block to run all experiments at once.
 
-The main execution block runs all experiments sequentially. For the MNIST experiment, the default is 20 epochs; adjust as needed for faster testing.
+## Usage
 
-## Dependencies
+The code is provided as a self-contained Jupyter Notebook.
 
-- torch
-- torchvision
-- numpy
-- matplotlib
+1. **Open the Notebook:** Launch Jupyter Notebook in your terminal:
+    
+    ```
+    jupyter notebook AMKGH.ipynb
+    ```
+    
+2. **Run All Experiments:** To reproduce all results reported in the paper, you can simply run all cells in the notebook. The final cell contains a `if __name__ == "__main__":` block that automatically triggers:
+    - Quadratic Minimization (Condition Number = 10)
+    - Quadratic Minimization (Condition Number = 100)
+    - Rosenbrock Function Optimization
+    - MNIST Neural Network Training
+3. **Run Individual Experiments:** You can also run specific experiments interactively by executing the specific cells defining the experiment functions and then calling them manually in a new cell:
+    
+    ```
+    # Run only the Rosenbrock benchmark
+    run_rosenbrock()
+    ```
+    
 
-## License
+## Experiments & Benchmarks
 
-Copyright © 2025 Lakshya Gupta. All Rights Reserved.
+The code evaluates AMKGH against three standard baselines: **Adam**, **SGD with Momentum**, and **RMSprop**.
 
-This software and associated documentation files (the "Software") are the proprietary and confidential information of Lakshya Gupta. Unauthorized copying, distribution, modification, public display, or public performance of this Software, via any medium, is strictly prohibited.
+### 1. Quadratic Function
 
-## Contact
+Tests convergence speed on convex surfaces with varying condition numbers ($\kappa=10$ and $\kappa=100$).
 
-For inquiries, please contact Lakshya Gupta at lakshya.gupta.ug24@plaksha.edu.in
+- **Goal:** Reach loss $< 10^{-6}$.
+
+### 2. Rosenbrock Function
+
+Tests ability to escape saddle points and navigate long, narrow, curved valleys (non-convex).
+
+- **Goal:** Reach loss $< 10^{-4}$.
+
+### 3. MNIST Digit Classification
+
+Tests generalization performance on a real-world deep learning task using a 3-layer MLP (784 -> 128 -> 64 -> 10).
+
+- **Goal:** Maximize test accuracy after 20 epochs.
+
+## Reproducibility
+
+A global seed (`BASE_SEED = 42`) is set at the beginning of the notebook to ensure that weight initialization, data shuffling, and matrix generation are consistent across runs.
+
+## Author
+
+**Lakshya Gupta** Class of 2028, Plaksha University Course: FM216
