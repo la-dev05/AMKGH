@@ -58,15 +58,15 @@ The code evaluates AMKGH against three standard baselines: **Adam**, **SGD wit
 
 ### 1. Quadratic Function
 
-Tests convergence speed on convex surfaces with varying condition numbers ( $\kappa=10$ and $\kappa=100$ ).
+Tests convergence speed on convex surfaces with varying condition numbers ( `κ=10` and `κ=100` ).
 
-- **Goal:** Reach loss $< 10^{-6}$ .
+- **Goal:** Reach loss `< 10^-6` .
 
 ### 2. Rosenbrock Function
 
 Tests ability to escape saddle points and navigate long, narrow, curved valleys (non-convex).
 
-- **Goal:** Reach loss $< 10^{-4}$ .
+- **Goal:** Reach loss `< 10^-4` .
 
 ### 3. MNIST Digit Classification
 
@@ -80,7 +80,7 @@ A global seed (`BASE_SEED = 42`) is set at the beginning of the notebook to ensu
 
 ## Author
 
-**Lakshya Gupta** Class of 2028, Plaksha University Course: FM216
+**Lakshya Gupta**
 
 Email: lakshya.gupta.ug24@plaksha.edu.in
 
