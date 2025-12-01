@@ -1,4 +1,4 @@
-# AMKGH (Adaptive Momentum Kurtosis Hybrid) Optimizer
+# AMKGH (Adaptive Momentum Kurtosis Gated Hybrid) Optimizer
 
 AMKGH introduces a dynamic mechanism that switches between an adaptive update (Adam-style) and a momentum-based update (SGD-style) based on the **kurtosis** (heaviness of tails) of the gradient distribution. This allows it to maintain the fast convergence of adaptive methods on smooth landscapes while providing the robustness of SGD on noisy or ill-conditioned landscapes.
 
