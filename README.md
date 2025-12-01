@@ -80,4 +80,14 @@ A global seed (`BASE_SEED = 42`) is set at the beginning of the notebook to ensu
 
 ## Author
 
-**Lakshya Gupta** Class of 2028, Plaksha University Course: FM216
+**Lakshya Gupta** Class of 2028, Plaksha University Course: FM216
+
+Email: lakshya.gupta.ug24@plaksha.edu.in
+
+---
+
+## License
+
+© 2025 Lakshya Gupta. All rights reserved.
+
+This work is proprietary and confidential. Unauthorized copying, modification, distribution, or use of this software is strictly prohibited without express written permission from the author.
